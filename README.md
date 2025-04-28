@@ -81,14 +81,9 @@ Adapte esses métodos conforme a interface de uso (console, interface gráfica e
 ## 📈 Futuras implementações
 
 - 💾 Persistência de dados via banco de dados (MySQL, PostgreSQL) ou arquivo local
-- 🖥️ Interface gráfica para uso mais intuitivo
 - 🔎 Filtros avançados de busca por produtos, fornecedores e movimentações
-- 📑 Geração de relatórios em PDF ou Excel
 - 👤 Cadastro e autenticação de usuários com permissões
 - 🚨 Alertas automáticos de baixo estoque
-- 🌐 Suporte a múltiplos estoques e filiais
-- 🧪 Testes automatizados (JUnit)
-- 🔗 API REST para integração com outros sistemas
 - ✅ Melhor validação dos dados de entrada
 
 ---
