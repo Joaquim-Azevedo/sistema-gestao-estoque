@@ -62,17 +62,14 @@ Abaixo estão os métodos/comandos reais disponíveis no sistema para gerenciame
 ## 👨‍💻 Exemplo de uso (pseudocódigo)
 
 ---
-java Estoque estoque = new Estoque();
-// `Criar um fornecedor:` Fornecedor fornecedor = new Fornecedor("Empresa LTDA", "129391210192", "empresa@email.com");
-// `Adicionar produtos:` estoque.adicionarProduto("Arroz Branco", "Arroz Branco", Categoria.ALIMENTO, 12.90); estoque.
-// `Remover produto por id:` estoque.removerProduto(1);
-adicionarProduto("Mouse Logitech G903", "Mouse Logitech G903 Preto Sem Fio", Categoria.ELETRONICO, 550);
-// `Registrar fornecimento de produtos (entrada de estoque):` estoque.fornecerProduto(fornecedor, 1, 300); estoque.
-fornecerProduto
-(fornecedor, 2, 20);
-// `Registrar saída de produto:` estoque.saidaProduto(fornecedor, 2, 5);
-// `Listar todos os produtos do estoque:` System.out.println(estoque);
-// `Imprimir histórico de movimentações:` estoque.imprimirMovimentacoes();
+- java Estoque estoque = new Estoque();
+- `Criar um fornecedor:` Fornecedor fornecedor = new Fornecedor("Empresa LTDA", "129391210192", "empresa@email.com");
+- `Adicionar produtos:` estoque.adicionarProduto("Arroz Branco", "Arroz Branco", Categoria.ALIMENTO, 12.90); estoque.adicionarProduto("Mouse Logitech G903", "Mouse Logitech G903 Preto Sem Fio", Categoria.ELETRONICO, 550);
+- `Remover produto por id:` estoque.removerProduto(1); 
+- `Registrar fornecimento de produtos (entrada de estoque):` estoque.fornecerProduto(fornecedor, 1, 300); estoque.fornecerProduto(fornecedor, 2, 20);
+- `Registrar saída de produto:` estoque.saidaProduto(fornecedor, 2, 5);
+- `Listar todos os produtos do estoque:` System.out.println(estoque);
+- `Imprimir histórico de movimentações:` estoque.imprimirMovimentacoes();
 
 Adapte esses métodos conforme a interface de uso (console, interface gráfica etc).
 
