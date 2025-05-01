@@ -1,7 +1,5 @@
 package com.joaquim.sistemagestaoestoque.model;
 
-import com.joaquim.sistemagestaoestoque.service.Estoque;
-
 public final class Fornecedor {
     private String nome;
     private String cnpj;
@@ -11,6 +9,15 @@ public final class Fornecedor {
         this.nome = nome;
         this.cnpj = cnpj;
         this.contato = contato;
+    }
+
+    @Override
+    public String toString() {
+        return "Fornecedor{" +
+                ", nome='" + nome + '\'' +
+                ", cnpj='" + cnpj + '\'' +
+                ", contato='" + contato + '\'' +
+                '}';
     }
 
     public String getNome() {

@@ -1,6 +1,7 @@
 # 🏷️ Sistema de Gestão de Estoque
 
 Projeto em **Java 24**, voltado para o controle e gerenciamento de estoque, permitindo cadastro de produtos, fornecedores, movimentações e geração de relatórios simples.
+Agora integrado quase que totalmente com banco de dados!
 
 ## ✨ Funcionalidades
 
@@ -19,15 +20,43 @@ Projeto em **Java 24**, voltado para o controle e gerenciamento de estoque, perm
 - `Estoque`: Classe de serviço para manipulação do estoque.
 - `Enums`: Categorias de produtos e tipos de movimentação
 
-## 🚀 Como executar
+## 🚀 Como executar e usar
 
-1. Clone este repositório:
+### 1. Pré-requisitos
+
+- [Java 24](https://www.oracle.com/br/java/technologies/downloads/)
+- [MySQL Server](https://dev.mysql.com/downloads/mysql/)
+- [IntelliJ IDEA](https://www.jetbrains.com/idea/) ou outra IDE com suporte para Java.
+- Driver JDBC MySQL ([Veja como baixar!](https://dev.mysql.com/downloads/connector/j/))
+
+### 2. Clone o projeto
+
+Clone o repositório
+
     ```sh
-    git clone https://github.com/seu-usuario/seu-repositorio.git
+    git clone https://github.com/Joaquim-Azevedo/sistema-gestao-estoque
     ```
-2. Abra no IntelliJ IDEA ou em outra IDE de sua preferência
-3. Certifique-se de estar usando o Java 24
-4. Execute a classe principal conforme o ponto de entrada do projeto
+
+### 3. Configure o banco de dados
+
+O sistema está pronto para conectar em um banco MySQL rodando localmente, conforme abaixo:
+
+- **Host:** `localhost`
+- **Porta:** `3306`
+- **Banco:** `estoquedb`
+- **Usuário:** `root`
+- **Senha:** `manager`
+
+> **Importante:**  
+> Modifique as configurações de acesso no arquivo `ConnectionFactory.java` se desejar mudar usuário, senha ou nome do banco.
+
+Crie o banco de dados e tabelas:
+
+- **Baixe o arquivo Script SQL para facilitar sua vida! ->** [Script SQL EstoqueDB](https://drive.google.com/file/d/1so1choo1oCn-TzRiwYQUGnibBlVoXil-/view?usp=sharing)
+
+### 4. Execute o projeto
+
+Execute a classe principal (ex: `EstoqueApplication.java`) e siga o menu interativo pelo console para utilizar as opções.
 
 ---
 
@@ -59,20 +88,48 @@ Abaixo estão os métodos/comandos reais disponíveis no sistema para gerenciame
 
 ---
 
-## 👨‍💻 Exemplo de uso (pseudocódigo)
+# 🛠️ FAQ e dicas
+
+- Caso precise mudar o usuário, senha ou porta do banco, altere a linha de conexão em `ConnectionFactory.java`:
+
+  ```java
+  // Exemplo:
+  DriverManager.getConnection(
+      "jdbc:mysql://localhost:3306/estoquedb?user=usuario_novo&password=senha_nova"
+  );
+  ```
+- Se aparecer erro de driver ("No suitable driver!"), verifique se o JAR do MySQL Connector está configurado nas dependências do projeto.
 
 ---
+
+## 👨‍💻 Exemplos de uso (console)
+
+- **Iniciar sistema:**  
+  Execute o projeto e navegue pelas opções do menu no terminal.
+
+- **Adicionar produto:**  
+  Siga o menu para informar nome, descrição, categoria e valor.
+
+- **Registrar entrada/saída:**  
+  Informe o ID do produto e a quantidade desejada.
+
+- **Adicionar/remover fornecedor:**  
+  Forneça nome, CNPJ e contato.
+
+Todas as operações são persistidas automaticamente no banco de dados configurado.
+
+---
+
+## 👨‍💻 Exemplo de uso (pseudocódigo)
+
 java Estoque estoque = new Estoque();
-// `Criar um fornecedor:` Fornecedor fornecedor = new Fornecedor("Empresa LTDA", "129391210192", "empresa@email.com");
-// `Adicionar produtos:` estoque.adicionarProduto("Arroz Branco", "Arroz Branco", Categoria.ALIMENTO, 12.90); estoque.
-// `Remover produto por id:` estoque.removerProduto(1);
-adicionarProduto("Mouse Logitech G903", "Mouse Logitech G903 Preto Sem Fio", Categoria.ELETRONICO, 550);
-// `Registrar fornecimento de produtos (entrada de estoque):` estoque.fornecerProduto(fornecedor, 1, 300); estoque.
-fornecerProduto
-(fornecedor, 2, 20);
-// `Registrar saída de produto:` estoque.saidaProduto(fornecedor, 2, 5);
-// `Listar todos os produtos do estoque:` System.out.println(estoque);
-// `Imprimir histórico de movimentações:` estoque.imprimirMovimentacoes();
+- `Criar um fornecedor:` Fornecedor fornecedor = new Fornecedor("Empresa LTDA", "129391210192", "empresa@email.com");
+- `Adicionar produtos:` estoque.adicionarProduto("Arroz Branco", "Arroz Branco", Categoria.ALIMENTO, 12.90);
+- `Remover produto por id:` estoque.removerProduto(1);
+- `Registrar fornecimento de produtos (entrada de estoque):` estoque.fornecerProduto(fornecedor, 1, 300);
+- `Registrar saída de produto:` estoque.saidaProduto(fornecedor, 2, 5);
+- `Listar todos os produtos do estoque:` estoque.listarProdutos();
+- `Imprimir histórico de movimentações:` estoque.imprimirMovimentacoes();
 
 Adapte esses métodos conforme a interface de uso (console, interface gráfica etc).
 
@@ -80,16 +137,24 @@ Adapte esses métodos conforme a interface de uso (console, interface gráfica e
 
 ## 📈 Futuras implementações
 
-- 💾 Persistência de dados via banco de dados (MySQL, PostgreSQL) ou arquivo local
-- 🖥️ Interface gráfica para uso mais intuitivo
-- 🔎 Filtros avançados de busca por produtos, fornecedores e movimentações
+- 💾 Persistência de dados via banco de dados (MySQL, PostgreSQL) ou arquivo local ✅
+- 🖥️ Interface gráfica para uso mais intuitivo ✅
+- 🔎 Filtros avançados de busca por produtos ✅ 
 - 📑 Geração de relatórios em PDF ou Excel
-- 👤 Cadastro e autenticação de usuários com permissões
-- 🚨 Alertas automáticos de baixo estoque
-- 🌐 Suporte a múltiplos estoques e filiais
-- 🧪 Testes automatizados (JUnit)
 - 🔗 API REST para integração com outros sistemas
-- ✅ Melhor validação dos dados de entrada
+
+---
+
+## ✅ Implementações em desenvolvimento  
+- Listagem das movimentações (persistindo dados no banco de dados)
+- Filtros de busca mais avançados para produtos, fornecedores e movimentações (por nome, por categoria, por horário)
+- Alertas automáticos de baixo estoque
+- Melhor validação dos dados de entrada
+---
+
+## 💡 Sugestões e dúvidas
+
+Abra issues no repositório ou colabore via Pull Requests!
 
 ---
 

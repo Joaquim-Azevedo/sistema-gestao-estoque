@@ -4,5 +4,5 @@ public enum Categoria {
     ALIMENTO,
     ENTRETENIMENTO,
     ROUPA,
-    ELETRONICO
+    ELETRONICO;
 }

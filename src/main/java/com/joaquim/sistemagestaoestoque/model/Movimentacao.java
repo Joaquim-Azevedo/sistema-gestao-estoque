@@ -9,7 +9,7 @@ public class Movimentacao {
     private int quantidade;
     private Produto produto;
 
-    public Movimentacao(Produto produto, Tipo tipo, int quantidade) {
+    public Movimentacao(Produto produto, Tipo tipo, int quantidade, double valorTotal) {
         this.dataHora = LocalDateTime.now();
         this.produto = produto;
         this.tipo = tipo;
