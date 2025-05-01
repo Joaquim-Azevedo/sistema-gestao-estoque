@@ -55,6 +55,10 @@ public class EstoqueApplication {
 
     private static void listarProdutos(){
         System.out.println("Produtos cadastrados: ");
+        if (etq.listarProdutos().isEmpty()) {
+            System.out.println("Não há produtos cadastrados ainda.");
+        }
+
         for (Produto produto : etq.listarProdutos()) {
             System.out.println(produto);
         }
