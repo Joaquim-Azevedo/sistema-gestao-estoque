@@ -33,9 +33,7 @@ Agora integrado quase que totalmente com banco de dados!
 
 Clone o repositório
 
-    ```sh
-    git clone https://github.com/Joaquim-Azevedo/sistema-gestao-estoque
-    ```
+ ```sh git clone https://github.com/Joaquim-Azevedo/sistema-gestao-estoque```
 
 ### 3. Configure o banco de dados
 
