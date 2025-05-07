@@ -1,20 +1,18 @@
 package com.joaquim.sistemagestaoestoque.service;
 
-import java.sql.Connection;
-import java.util.*;
-
 import com.joaquim.sistemagestaoestoque.ConnectionFactory;
 import com.joaquim.sistemagestaoestoque.dao.EstoqueDAO;
+import com.joaquim.sistemagestaoestoque.dao.MovimentacaoDAO;
 import com.joaquim.sistemagestaoestoque.model.*;
 
+import java.sql.Connection;
+import java.util.*;
 
 public class Estoque {
     private ConnectionFactory connection;
     private Connection conn;
-    private List<Movimentacao> movimentacoes;
 
     public Estoque() {
-        this.movimentacoes = new ArrayList<>();
         this.connection = new ConnectionFactory();
         this.conn = connection.getConnection();
     }
@@ -31,11 +29,13 @@ public class Estoque {
 
     // Fornecer um produto
     public void fornecerProduto(int id, int quantidade) {
+        new MovimentacaoDAO(conn).movimentarProduto(Tipo.ENTRADA, id, quantidade);
         new EstoqueDAO(conn).fornecerProduto(id, quantidade);
     }
 
     // Executar a saída / venda de um produto.
     public void saidaProduto(int id, int quantidade) {
+        new MovimentacaoDAO(conn).movimentarProduto(Tipo.SAIDA, id, quantidade);
         new EstoqueDAO(conn).saidaProduto(id, quantidade);
     }
 
@@ -48,7 +48,7 @@ public class Estoque {
         new EstoqueDAO(conn).removerFornecedor(cnpj);
     }
 
-    public Set<Produto> listarProdutos(){
+    public List<Produto> listarProdutos(){
         return new EstoqueDAO(conn).listarProdutos();
     }
 
@@ -56,8 +56,8 @@ public class Estoque {
         return new EstoqueDAO(conn).buscarProdutoId(id);
     }
 
-    public List<Movimentacao> imprimirMovimentacoes(){
-        return movimentacoes;
+    public List<Movimentacao> listarMovimentacoesId(int tipoLista, int id, Tipo tipo) {
+        return new MovimentacaoDAO(conn).listarMovimentacaoTipo(tipoLista, id, tipo);
     }
 
 }

@@ -1,45 +1,56 @@
 package com.joaquim.sistemagestaoestoque.model;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import com.joaquim.sistemagestaoestoque.service.Estoque;
 
 public class Movimentacao {
-    private LocalDateTime dataHora;
-    private Tipo tipo;
+    private String nome;
+    private int produto_id;
     private int quantidade;
-    private Produto produto;
+    private Tipo tipo;
+    private double valorTotal;
+    private String data_hora;
 
-    public Movimentacao(Produto produto, Tipo tipo, int quantidade, double valorTotal) {
-        this.dataHora = LocalDateTime.now();
-        this.produto = produto;
-        this.tipo = tipo;
+    public Movimentacao(String nome, int produto_id, int quantidade, double valorTotal, Tipo tipo, String data_hora) {
+        this.produto_id = produto_id;
         this.quantidade = quantidade;
+        this.tipo = tipo;
+        this.valorTotal = valorTotal;
+        this.data_hora = data_hora;
+        this.nome = nome;
     }
 
-    public LocalDateTime getDataHora() {
-        return dataHora;
-    }
-
-    public Tipo getTipo() {
-        return tipo;
+    public int getProduto_id() {
+        return produto_id;
     }
 
     public int getQuantidade() {
         return quantidade;
     }
 
-    public Produto getProduto() {
-        return produto;
+    public Tipo getTipo() {
+        return tipo;
+    }
+
+    public double getValorTotal() {
+        return valorTotal;
+    }
+
+    public String getData_hora() {
+        return data_hora;
+    }
+
+    public String getNome() {
+        return nome;
     }
 
     @Override
     public String toString() {
-        DateTimeFormatter dataFormatada = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-        return "Movimentacao{" +
-                "dataHora=" + dataHora.format(dataFormatada) +
-                ", tipo=" + tipo +
-                ", quantidade=" + quantidade +
-                ", produto=" + produto +
-                '}';
+        return "------------" +
+                "\nProduto: " + this.nome +
+                "\nID do produto: " + this.produto_id +
+                "\nQuantidade: " + this.quantidade +
+                "\nValor Total: " + this.valorTotal +
+                "\nTipo: " + this.tipo.name() +
+                "\nData/Horário: " + this.data_hora;
     }
 }

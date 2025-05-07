@@ -1,18 +1,13 @@
 package com.joaquim.sistemagestaoestoque.dao;
 
 import com.joaquim.sistemagestaoestoque.model.Categoria;
-import com.joaquim.sistemagestaoestoque.model.Movimentacao;
 import com.joaquim.sistemagestaoestoque.model.Produto;
-import com.joaquim.sistemagestaoestoque.model.Tipo;
 
 import java.sql.*;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class EstoqueDAO {
     private Connection conn;
-    private List<Movimentacao> movimentacoes;
 
     public EstoqueDAO(Connection conn) {
         this.conn = conn;
@@ -80,7 +75,6 @@ public class EstoqueDAO {
         String updateSql = "UPDATE produto SET quantidade = ?, preco_total = ? WHERE produto_id = ?";
 
         try (PreparedStatement selectSmt = conn.prepareStatement(selectSql)){
-
             selectSmt.setInt(1, id);
 
             try (ResultSet rs = selectSmt.executeQuery()){
@@ -95,7 +89,6 @@ public class EstoqueDAO {
                         updateSmt.setDouble(2, novoPrecoTotal);
                         updateSmt.setInt(3, id);
                         updateSmt.executeUpdate();
-                        System.out.println("Quantidade atualizada para: " + novaQuantidade);
                     }
                 } else {
                     System.out.println("Produto não encontrado.");
@@ -109,7 +102,6 @@ public class EstoqueDAO {
     public void saidaProduto(int id, int quantidade){
         String selectSql = "SELECT quantidade, preco_unidade FROM produto WHERE produto_id = ?";
         String updateSql = "UPDATE produto SET quantidade = ?, preco_total = ? WHERE produto_id = ?";
-
 
         try (PreparedStatement selectSmt = conn.prepareStatement(selectSql)) {
             selectSmt.setInt(1, id);
@@ -163,10 +155,10 @@ public class EstoqueDAO {
         }
     }
 
-    public Set<Produto> listarProdutos(){
-        Set<Produto> produtos = new HashSet<>();
+    public List<Produto> listarProdutos(){
+        List<Produto> produtos = new ArrayList<>();
 
-        String sql = "SELECT * FROM produto";
+        String sql = "SELECT * FROM produto ORDER BY produto_id ASC";
 
         try(PreparedStatement pstm = conn.prepareStatement(sql)) {
             try (ResultSet rs = pstm.executeQuery()) {
@@ -180,14 +172,14 @@ public class EstoqueDAO {
                     int quantidade = rs.getInt(5);
                     double precoUnidade = rs.getDouble(6);
 
-                    Produto listProduto = new Produto(nome, descricao, categoria, precoUnidade);
-                    listProduto.setQuantidade(quantidade);
-                    listProduto.setPrecoTotal();
+                    Produto produto = new Produto(nome, descricao, categoria, precoUnidade);
+                    produto.setQuantidade(quantidade);
+                    produto.setPrecoTotal();
 
                     // Atribuindo o primary key ao ID do produto depois de criado/instanciado.
-                    listProduto.setProduto_id(produto_id);
+                    produto.setProduto_id(produto_id);
 
-                    produtos.add(listProduto);
+                    produtos.add(produto);
 
                 }
             }

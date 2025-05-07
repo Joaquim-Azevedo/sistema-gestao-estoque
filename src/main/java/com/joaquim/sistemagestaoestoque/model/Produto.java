@@ -24,16 +24,8 @@ public final class Produto {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public String getDescricao() {
         return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
     }
 
     public int getProduto_id() {
@@ -59,10 +51,6 @@ public final class Produto {
 
     public double getPrecoUnidade() {
         return precoUnidade;
-    }
-
-    public void setPrecoUnidade(double precoUnidade) {
-        this.precoUnidade = precoUnidade;
     }
 
     public double getPrecoTotal() {
