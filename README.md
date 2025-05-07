@@ -33,9 +33,7 @@ Agora integrado quase que totalmente com banco de dados!
 
 Clone o repositório
 
-    ```sh
-    git clone https://github.com/Joaquim-Azevedo/sistema-gestao-estoque
-    ```
+ ```sh git clone https://github.com/Joaquim-Azevedo/sistema-gestao-estoque```
 
 ### 3. Configure o banco de dados
 
@@ -52,7 +50,7 @@ O sistema está pronto para conectar em um banco MySQL rodando localmente, confo
 
 Crie o banco de dados e tabelas:
 
-- **Baixe o arquivo Script SQL para facilitar sua vida! ->** [Script SQL EstoqueDB](https://drive.google.com/file/d/1so1choo1oCn-TzRiwYQUGnibBlVoXil-/view?usp=sharing)
+- **Meus dumps do SQL para te ajudar ->** [Script SQL EstoqueDB](https://drive.google.com/file/d/1wW9AcE1iB_PHZRkxskP6F6xOQ_fzWaAq/view?usp=sharing)
 
 ### 4. Execute o projeto
 
@@ -79,11 +77,12 @@ Abaixo estão os métodos/comandos reais disponíveis no sistema para gerenciame
   - Registra a saída de um produto do estoque.
 
 ### Movimentações
-- `imprimirMovimentacoes()`
+- `listarMovimentacoes(int tipo, int id, Tipo tipoMovimentacao)`
+  - 3 tipos de listagem de movimentações
   - Imprime o histórico de movimentações de entrada e saída do estoque.
 
 ### Consulta
-- `getProdutos()`
+- `listarProdutos()`
   - Retorna a lista de produtos cadastrados no estoque.
 
 ---
@@ -94,10 +93,9 @@ Abaixo estão os métodos/comandos reais disponíveis no sistema para gerenciame
 
   ```java
   // Exemplo:
-  DriverManager.getConnection(
-      "jdbc:mysql://localhost:3306/estoquedb?user=usuario_novo&password=senha_nova"
-  );
-  ```
+  DriverManager.getConnection("jdbc:mysql://localhost:3306/estoquedb?user=usuario_novo&password=senha_nova");
+  
+  
 - Se aparecer erro de driver ("No suitable driver!"), verifique se o JAR do MySQL Connector está configurado nas dependências do projeto.
 
 ---
@@ -107,6 +105,8 @@ Abaixo estão os métodos/comandos reais disponíveis no sistema para gerenciame
 - **Iniciar sistema:**  
   Execute o projeto e navegue pelas opções do menu no terminal.
 
+- **Buscar produto por ID**
+  Informe o ID do produto para realizar a busca.
 - **Adicionar produto:**  
   Siga o menu para informar nome, descrição, categoria e valor.
 
@@ -115,6 +115,9 @@ Abaixo estão os métodos/comandos reais disponíveis no sistema para gerenciame
 
 - **Adicionar/remover fornecedor:**  
   Forneça nome, CNPJ e contato.
+
+- **Listar movimentações:**
+  Forneça o tipo de lista e/ou o ID do produto e/ou o tipo de movimentação.
 
 Todas as operações são persistidas automaticamente no banco de dados configurado.
 
@@ -146,10 +149,12 @@ Adapte esses métodos conforme a interface de uso (console, interface gráfica e
 ---
 
 ## ✅ Implementações em desenvolvimento  
-- Listagem das movimentações (persistindo dados no banco de dados)
-- Filtros de busca mais avançados para produtos, fornecedores e movimentações (por nome, por categoria, por horário)
+- Listagem das movimentações (persistindo dados no banco de dados) ✅
+- Filtros de busca mais avançados para produtos, fornecedores e movimentações (por nome, por categoria)
 - Alertas automáticos de baixo estoque
 - Melhor validação dos dados de entrada
+
+
 ---
 
 ## 💡 Sugestões e dúvidas
