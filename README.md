@@ -3,16 +3,16 @@
 Projeto em **Java 24**, voltado para o controle e gerenciamento de estoque, permitindo cadastro de produtos, fornecedores, movimentações e geração de relatórios simples.
 Agora integrado quase que totalmente com banco de dados!
 
-## ✨ Funcionalidades
+## Funcionalidades
 
-- 📦 Cadastro e listagem de **Produtos** (com categorias e preço)
-- 🏭 Cadastro e consulta de **Fornecedores**
-- ➕ Reposição (entrada) de produtos no estoque
-- ➖ Saída de produtos do estoque
-- 📋 Registro e consulta de movimentações (entrada/saída)
-- 🗂️ Relatórios de histórico de movimentações
+-  Cadastro e listagem de **Produtos** (com categorias e preço)
+-  Cadastro e consulta de **Fornecedores**
+-  Reposição (entrada) de produtos no estoque
+-  Saída de produtos do estoque
+-  Registro e consulta de movimentações (entrada/saída)
+-  Relatórios de histórico de movimentações
 
-## 🗂️ Estrutura básica do projeto
+##  Estrutura básica do projeto
 
 - `Produto`: Representação de um produto.
 - `Fornecedor`: Entidade/empresa que representa quem fornece os produtos.
@@ -58,7 +58,7 @@ Execute a classe principal (ex: `EstoqueApplication.java`) e siga o menu interat
 
 ---
 
-## 📝 Métodos e comandos disponíveis
+## Métodos e comandos disponíveis
 
 Abaixo estão os métodos/comandos reais disponíveis no sistema para gerenciamento de estoque:
 
@@ -100,7 +100,7 @@ Abaixo estão os métodos/comandos reais disponíveis no sistema para gerenciame
 
 ---
 
-## 👨‍💻 Exemplos de uso (console)
+## Exemplos de uso (console)
 
 - **Iniciar sistema:**  
   Execute o projeto e navegue pelas opções do menu no terminal.
@@ -123,7 +123,7 @@ Todas as operações são persistidas automaticamente no banco de dados configur
 
 ---
 
-## 👨‍💻 Exemplo de uso (pseudocódigo)
+## Exemplo de uso (pseudocódigo)
 
 java Estoque estoque = new Estoque();
 - `Criar um fornecedor:` Fornecedor fornecedor = new Fornecedor("Empresa LTDA", "129391210192", "empresa@email.com");
@@ -140,15 +140,15 @@ Adapte esses métodos conforme a interface de uso (console, interface gráfica e
 
 ## 📈 Futuras implementações
 
-- 💾 Persistência de dados via banco de dados (MySQL, PostgreSQL) ou arquivo local ✅
-- 🖥️ Interface via console para uso mais intuitivo ✅
-- 🔎 Filtros avançados de busca por produtos ✅ 
-- 📑 Geração de relatórios em PDF ou Excel
-- 🔗 API REST para integração com outros sistemas
+-  Persistência de dados via banco de dados (MySQL, PostgreSQL) ou arquivo local ✅
+-  Interface via console para uso mais intuitivo ✅
+-  Filtros avançados de busca por produtos ✅ 
+-  Geração de relatórios em PDF ou Excel
+-  API REST para integração com outros sistemas
 
 ---
 
-## ✅ Implementações em desenvolvimento  
+## Implementações em desenvolvimento  
 - Listagem das movimentações (persistindo dados no banco de dados) ✅
 - Filtros de busca mais avançados para produtos, fornecedores e movimentações (por nome, por categoria)
 - Alertas automáticos de baixo estoque
